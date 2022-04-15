@@ -3,7 +3,7 @@ const falso = require('@ngneat/falso')
 const { User } = require('../models')
 module.exports = {
   async up(queryInterface, Sequelize) {
-    const user = await user
+    // const user = await user
     const tasks = [...Array(50)].map((_) => {
       return {
         taskName: falso.randJobType(),

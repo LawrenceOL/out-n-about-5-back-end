@@ -1,5 +1,14 @@
-// const Router = require('express').Router()
-// const { Route } = require('express')
-// const controller = require('../controllers.LocationController')
+const router = require('express').Router()
 
-// module.exports = Router
+const controller = require('../controllers/LocationController')
+
+router.get('/all', controller.GetAllLocation)
+router.get('/pk/:pk', controller.GetLocationByPk)
+router.post('/create/', controller.CreateLocation)
+router.put('/update/:pk', controller.UpdateLocation)
+router.delete('/delete/:pk', controller.DeleteLocation)
+router.get('/', (req, res) => {
+  res.send('location root')
+})
+
+module.exports = router
