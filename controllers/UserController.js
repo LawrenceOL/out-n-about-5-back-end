@@ -4,10 +4,11 @@ const { User } = require('../models')
 const GetAllUser = async (req, res) => {
   try {
     const users = await User.findAll()
-
-    return res.send(users)
+    if (users) {
+      return res.status(200).send(users)
+    }
+    res.status(204).send('No User Found')
   } catch (error) {
-    res.send("can't get anything")
     throw error
   }
 }
@@ -15,10 +16,11 @@ const GetUserByPk = async (req, res) => {
   try {
     const pk = req.params.pk
     const users = await User.findByPk(pk)
-
-    return res.send(users)
+    if (users) {
+      return res.status(200).send(users)
+    }
+    res.status(204).send('No User Found')
   } catch (error) {
-    res.send("can't get anything")
     throw error
   }
 }
@@ -27,12 +29,17 @@ const RegisterUser = async (req, res) => {
   try {
     const user = req.body
     const newUser = await User.create(user)
-
-    res.send(newUser)
+    if (newUser) {
+      return res.status(201).send(newUser)
+    }
+    res
+      .status(203)
+      .send({ msg: 'User not register. Please check require info.' })
   } catch (error) {
     throw error
   }
 }
+
 const UpdateUser = async (req, res) => {
   try {
     const pk = req.params.pk
@@ -41,8 +48,10 @@ const UpdateUser = async (req, res) => {
       where: { id: pk },
       returning: true
     })
-
-    res.send(updatedUser)
+    if (updatedUser) {
+      returnres.status(200).send(updatedUser)
+    }
+    res.status(204).send('No user found on update.')
   } catch (error) {
     throw error
   }
@@ -55,8 +64,10 @@ const DeleteUser = async (req, res) => {
     await User.destroy({
       where: { id: pk }
     })
-
-    res.send(`User: ${user.username} is deleted`)
+    if (user) {
+      return res.status(200).send(`User: ${user.username} is deleted`)
+    }
+    res.status(204).send({ msg: 'Did not find user to delete' })
   } catch (error) {
     throw error
   }
