@@ -20,10 +20,7 @@ module.exports = (sequelize, DataTypes) => {
       username: DataTypes.STRING,
       password: DataTypes.STRING,
       email: DataTypes.STRING,
-      activityList: {
-        type: DataTypes.JSON,
-        allowNull: true
-      },
+      activityList: DataTypes.INTEGER,
       score: { type: DataTypes.INTEGER, allowNull: true }
     },
     {

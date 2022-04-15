@@ -1,8 +1,9 @@
 'use strict'
 const falso = require('@ngneat/falso')
-
+const { Task } = require('../models')
 module.exports = {
   async up(queryInterface, Sequelize) {
+    const task = await Task.findAll()
     const user = [...Array(100)].map((_) => {
       return {
         firstName: falso.randFirstName(),
@@ -11,7 +12,7 @@ module.exports = {
         username: falso.randUserName(),
         password: falso.randPassword(),
         email: falso.randEmail(),
-        // activityList: [],
+        activityList: task[Math.floor(Math.random() * task.length)].id,
         score: 0,
         createdAt: new Date(),
         updatedAt: new Date()

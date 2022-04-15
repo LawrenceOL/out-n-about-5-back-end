@@ -2,20 +2,22 @@
 const { Model } = require('sequelize')
 module.exports = (sequelize, DataTypes) => {
   class TaskLocation extends Model {
-    /**
-     * Helper method for defining associations.
-     * This method is not a part of Sequelize lifecycle.
-     * The `models/index` file will call this method automatically.
-     */
-    static associate(models) {
-      // define association here
-    }
+    static associate(models) {}
   }
   TaskLocation.init(
     {
-      taskId: DataTypes.INTEGER,
-      locationId: DataTypes.INTEGER
+      taskId: {
+        type: DataTypes.INTEGER,
+        onDelete: 'CASCADE',
+        references: { model: 'tasks', key: 'id' }
+      },
+      locationId: {
+        type: DataTypes.INTEGER,
+        onDelete: 'CASCADE',
+        references: { model: 'locations', key: 'id' }
+      }
     },
+
     {
       sequelize,
       modelName: 'TaskLocation',

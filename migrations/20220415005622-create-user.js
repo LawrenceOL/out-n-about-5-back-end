@@ -27,7 +27,7 @@ module.exports = {
         type: Sequelize.STRING
       },
       activityList: {
-        type: Sequelize.JSON,
+        type: Sequelize.INTEGER,
         allowNull: true
       },
       score: {
