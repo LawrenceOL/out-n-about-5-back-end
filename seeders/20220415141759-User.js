@@ -8,7 +8,7 @@ module.exports = {
       return {
         firstName: falso.randFirstName(),
         lastName: falso.randLastName(),
-        location: falso.randLongitude(),
+        location: falso.randStreetAddress(),
         username: falso.randUserName(),
         password: falso.randPassword(),
         email: falso.randEmail(),

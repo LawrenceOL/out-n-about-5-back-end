@@ -3,7 +3,7 @@ const cors = require('cors')
 const logger = require('morgan')
 
 // const LocationRouter = require('./routes/LocationRouter')
-// const UserRouter = require('./routes/UserRouter')
+const UserRouter = require('./routes/UserRouter')
 // const TaskRouter = require('./routes/TaskRouter')
 
 const PORT = process.env.PORT || 3001
@@ -13,7 +13,8 @@ app.use(cors())
 app.use(express.json())
 app.use(logger('dev'))
 
-// app.use('./user', UserRouter)
+app.use('/user', UserRouter)
+
 // app.use('./location', LocationRouter)
 // app.use('./task', TaskRouter)
 
