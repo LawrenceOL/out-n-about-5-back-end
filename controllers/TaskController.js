@@ -66,7 +66,7 @@ const DeleteTask = async (req, res) => {
       where: { id: pk }
     })
     if (task) {
-      return res.status(200).send(`User: ${task.username} is deleted`)
+      return res.status(200).send(`User: ${task.name} is deleted`)
     }
     res.status(204).send({ msg: 'Did not find user to delete' })
   } catch (error) {
