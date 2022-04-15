@@ -1,6 +1,6 @@
 'use strict'
 const { Model } = require('sequelize')
-const Location = require('./location')
+
 module.exports = (sequelize, DataTypes) => {
   class Task extends Model {
     /**
