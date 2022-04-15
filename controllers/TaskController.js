@@ -50,7 +50,7 @@ const UpdateTask = async (req, res) => {
       returning: true
     })
     if (updateTask) {
-      returnres.status(200).send(updateTask)
+      return res.status(200).send(updateTask)
     }
     res.status(204).send('No user found on update.')
   } catch (error) {
@@ -66,9 +66,9 @@ const DeleteTask = async (req, res) => {
       where: { id: pk }
     })
     if (task) {
-      return res.status(200).send(`User: ${task.name} is deleted`)
+      return res.status(200).send(`Task: ${task.taskName} is deleted`)
     }
-    res.status(204).send({ msg: 'Did not find user to delete' })
+    res.status(204).send({ msg: 'Did not find any task to delete' })
   } catch (error) {
     throw error
   }
