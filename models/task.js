@@ -1,5 +1,6 @@
 'use strict'
-const { Model, INTEGER } = require('sequelize')
+const { Model } = require('sequelize')
+const Location = require('./location')
 module.exports = (sequelize, DataTypes) => {
   class Task extends Model {
     /**
@@ -9,10 +10,11 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       Task.belongsTo(models.User, { as: 'task', foreignKey: 'userId' })
-      Task.belongsToMany(models.Location, {
-        as: 'tasks',
-        foreignKey: 'taskId',
-        through: 'task_location'
+
+      Task.belongsToMany(Location, {
+        through: models.task_locations,
+        as: 'activity',
+        foreignKey: 'taskId'
       })
     }
   }

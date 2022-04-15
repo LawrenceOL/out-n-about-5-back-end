@@ -23,9 +23,7 @@ module.exports = {
       description: {
         type: Sequelize.STRING
       },
-      taskid: {
-        type: Sequelize.INTEGER
-      },
+
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

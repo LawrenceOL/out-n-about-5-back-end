@@ -1,5 +1,6 @@
 'use strict'
 const { Model } = require('sequelize')
+const Task = require('./task')
 module.exports = (sequelize, DataTypes) => {
   class Location extends Model {
     /**
@@ -10,9 +11,9 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
       Location.belongsToMany(models.Task, {
-        as: 'locations',
-        foreignKey: 'locationId',
-        through: 'task_location'
+        through: models.task_locations,
+        as: 'location',
+        foreignKey: 'locationId'
       })
     }
   }
