@@ -12,7 +12,7 @@ module.exports = {
         type: Sequelize.STRING
       },
       location: {
-        type: Sequelize.INTEGER
+        type: Sequelize.STRING
       },
       description: {
         type: Sequelize.STRING

@@ -8,7 +8,10 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      name: {
+      firstName: {
+        type: Sequelize.STRING
+      },
+      lastName: {
         type: Sequelize.STRING
       },
       location: {
@@ -24,10 +27,12 @@ module.exports = {
         type: Sequelize.STRING
       },
       activityList: {
-        type: Sequelize.JSON
+        type: Sequelize.INTEGER,
+        allowNull: true
       },
       score: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        allowNull: true
       },
       createdAt: {
         allowNull: false,
