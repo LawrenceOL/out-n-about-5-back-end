@@ -15,7 +15,7 @@ module.exports = {
         type: Sequelize.STRING
       },
       address: {
-        type: Sequelize.STRING
+        type: Sequelize.TEXT
       },
       gps: {
         type: Sequelize.STRING

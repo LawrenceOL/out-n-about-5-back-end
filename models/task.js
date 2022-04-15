@@ -21,7 +21,7 @@ module.exports = (sequelize, DataTypes) => {
   Task.init(
     {
       taskName: DataTypes.STRING,
-      location: DataTypes.INTEGER,
+      location: DataTypes.STRING,
       description: DataTypes.STRING,
       checkIn: DataTypes.BOOLEAN,
       comment: DataTypes.STRING,
