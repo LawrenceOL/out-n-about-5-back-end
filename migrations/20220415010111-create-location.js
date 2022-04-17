@@ -18,10 +18,18 @@ module.exports = {
         type: Sequelize.TEXT
       },
       gps: {
-        type: Sequelize.STRING
+        type: Sequelize.JSON
       },
       description: {
         type: Sequelize.STRING
+      },
+      taskId: {
+        type: Sequelize.INTEGER,
+        onDelete: 'CASCADE',
+        references: {
+          model: 'users',
+          key: 'id'
+        }
       },
 
       createdAt: {

@@ -1,8 +1,13 @@
 const { Location } = require('../models')
 
+// const getmyLocation = async (req, res) => {
+//   res.send('working')
+// }
+
 const GetAllLocation = async (req, res) => {
   try {
     const location = await Location.findAll()
+    console.log(location)
     if (location) {
       return res.status(200).send(location)
     }

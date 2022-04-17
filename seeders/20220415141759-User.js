@@ -12,7 +12,7 @@ module.exports = {
         username: falso.randUserName(),
         password: falso.randPassword(),
         email: falso.randEmail(),
-        activityList: task[Math.floor(Math.random() * task.length)].id,
+        // activityList: task[Math.floor(Math.random() * task.length)].id,
         score: 0,
         createdAt: new Date(),
         updatedAt: new Date()
