@@ -1,4 +1,5 @@
 'use strict'
+
 module.exports = {
   async up(queryInterface, Sequelize) {
     await queryInterface.createTable('users', {
@@ -27,7 +28,7 @@ module.exports = {
         type: Sequelize.STRING
       },
       activityList: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.ARRAY(Sequelize.STRING),
         allowNull: true
       },
       score: {

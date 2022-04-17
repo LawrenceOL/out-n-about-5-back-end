@@ -17,10 +17,16 @@ module.exports = (sequelize, DataTypes) => {
       name: DataTypes.STRING,
       img: DataTypes.STRING,
       address: DataTypes.TEXT,
-      gps: DataTypes.STRING,
+      gps: DataTypes.JSON,
       description: DataTypes.STRING,
-
-      taskid: DataTypes.INTEGER
+      taskId: {
+        type: DataTypes.INTEGER,
+        onDelete: 'CASCADE',
+        references: {
+          model: 'tasks',
+          key: 'id'
+        }
+      }
     },
     {
       sequelize,

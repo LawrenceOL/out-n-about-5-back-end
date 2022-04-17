@@ -13,11 +13,12 @@ module.exports = {
      */
     const locations = [...Array(50)].map((_) => {
       const address = `${falso.randStreetAddress()} ${falso.randCity()}, ${falso.randState()} ${falso.randZipCode()}`
+      const gps = { lat: falso.randLatitude(), lon: falso.randLongitude() }
       return {
         name: falso.randStreetName(),
         img: falso.randImg(),
         address: address,
-        gps: falso.randNearbyGPSCoordinate(),
+        gps: gps,
         description: falso.randProductDescription(),
         createdAt: new Date(),
         updatedAt: new Date()
