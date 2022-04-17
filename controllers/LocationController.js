@@ -1,4 +1,4 @@
-const { Location } = require('../models')
+const { Location, Task, TaskLocation } = require('../models')
 
 // const getmyLocation = async (req, res) => {
 //   res.send('working')
@@ -78,10 +78,33 @@ const DeleteLocation = async (req, res) => {
   }
 }
 
+const findAllLocationWithTask = async (req, res) => {
+  try {
+    const location = await Location.findAll({
+      include: [{ model: Task, as: 'place' }]
+    })
+    return res.status(200).send(location)
+  } catch (error) {
+    throw error
+  }
+}
+
+const joinTaskLocation = async (req, res) => {
+  try {
+    const taskLocation = req.body
+    const newTaskLocation = await TaskLocation.create(taskLocation)
+    res.status(200).send(newTaskLocation)
+  } catch (error) {
+    error
+  }
+}
+
 module.exports = {
   GetAllLocation,
   GetLocationByPk,
   CreateLocation,
   UpdateLocation,
-  DeleteLocation
+  DeleteLocation,
+  findAllLocationWithTask,
+  joinTaskLocation
 }

@@ -7,7 +7,7 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
       Location.belongsToMany(models.Task, {
         through: models.TaskLocation,
-        as: 'location',
+        as: 'place',
         foreignKey: 'locationId'
       })
     }
@@ -18,15 +18,15 @@ module.exports = (sequelize, DataTypes) => {
       img: DataTypes.STRING,
       address: DataTypes.TEXT,
       gps: DataTypes.JSON,
-      description: DataTypes.STRING,
-      taskId: {
-        type: DataTypes.INTEGER,
-        onDelete: 'CASCADE',
-        references: {
-          model: 'tasks',
-          key: 'id'
-        }
-      }
+      description: DataTypes.STRING
+      // taskId: {
+      //   type: DataTypes.INTEGER,
+      //   onDelete: 'CASCADE',
+      //   references: {
+      //     model: 'tasks',
+      //     key: 'id'
+      //   }
+      // }
     },
     {
       sequelize,
