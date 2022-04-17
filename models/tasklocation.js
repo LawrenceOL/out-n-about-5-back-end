@@ -9,11 +9,13 @@ module.exports = (sequelize, DataTypes) => {
       taskId: {
         type: DataTypes.INTEGER,
         onDelete: 'CASCADE',
+        allowNull: false,
         references: { model: 'tasks', key: 'id' }
       },
       locationId: {
         type: DataTypes.INTEGER,
         onDelete: 'CASCADE',
+        allowNull: false,
         references: { model: 'locations', key: 'id' }
       }
     },
