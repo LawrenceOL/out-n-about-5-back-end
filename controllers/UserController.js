@@ -45,7 +45,7 @@ const UpdateUser = async (req, res) => {
       returning: true
     })
     if (updatedUser) {
-      returnres.status(200).send(updatedUser)
+      return res.status(200).send(updatedUser)
     }
     res.status(204).send('No user found on update.')
   } catch (error) {
