@@ -27,9 +27,17 @@ const GetUserByPk = async (req, res) => {
 
 const RegisterUser = async (req, res) => {
   try {
-    const {firstName, lastName, email, username, password, location} = req.body
+    const { firstName, lastName, email, username, password, location } =
+      req.body
     let passwordDigest = await middleware.hashPassword(password)
-    const newUser = await User.create({firstName, lastName, email, username, passwordDigest, location})
+    const newUser = await User.create({
+      firstName,
+      lastName,
+      email,
+      username,
+      passwordDigest,
+      location
+    })
     res.send(newUser)
   } catch (error) {
     throw error
@@ -45,7 +53,7 @@ const UpdateUser = async (req, res) => {
       returning: true
     })
     if (updatedUser) {
-      returnres.status(200).send(updatedUser)
+      return res.status(200).send(updatedUser)
     }
     res.status(204).send('No user found on update.')
   } catch (error) {
@@ -93,7 +101,7 @@ const SignIn = async (req, res) => {
 }
 
 const CheckSession = async (req, res) => {
-  const {payload} = res.locals
+  const { payload } = res.locals
   res.send(payload)
 }
 
@@ -104,5 +112,5 @@ module.exports = {
   UpdateUser,
   DeleteUser,
   SignIn,
-  CheckSession,
+  CheckSession
 }

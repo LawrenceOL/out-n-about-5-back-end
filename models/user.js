@@ -20,11 +20,11 @@ module.exports = (sequelize, DataTypes) => {
       username: {
         type: DataTypes.STRING,
         unique: true,
-        allowNull: false,
+        allowNull: false
       },
       passwordDigest: {
-      type: DataTypes.STRING,
-      allowNull: false,
+        type: DataTypes.STRING,
+        allowNull: false
       },
       email: DataTypes.STRING,
       activityList: { type: DataTypes.ARRAY(DataTypes.STRING) },
