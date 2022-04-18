@@ -27,9 +27,17 @@ const GetUserByPk = async (req, res) => {
 
 const RegisterUser = async (req, res) => {
   try {
-    const {firstName, lastName, email, username, password, location} = req.body
+    const { firstName, lastName, email, username, password, location } =
+      req.body
     let passwordDigest = await middleware.hashPassword(password)
-    const newUser = await User.create({firstName, lastName, email, username, passwordDigest, location})
+    const newUser = await User.create({
+      firstName,
+      lastName,
+      email,
+      username,
+      passwordDigest,
+      location
+    })
     res.send(newUser)
   } catch (error) {
     throw error
@@ -93,7 +101,7 @@ const SignIn = async (req, res) => {
 }
 
 const CheckSession = async (req, res) => {
-  const {payload} = res.locals
+  const { payload } = res.locals
   res.send(payload)
 }
 
@@ -104,5 +112,5 @@ module.exports = {
   UpdateUser,
   DeleteUser,
   SignIn,
-  CheckSession,
+  CheckSession
 }

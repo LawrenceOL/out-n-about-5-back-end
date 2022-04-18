@@ -9,10 +9,7 @@ router.put('/update/:pk', controller.UpdateUser)
 router.delete('/delete/:pk', controller.DeleteUser)
 
 router.post('/signin', controller.SignIn)
-router.put('/profile',
-  middleware.stripToken,
-  middleware.verifyToken,
-)
+router.put('/profile', middleware.stripToken, middleware.verifyToken)
 router.get(
   '/session',
   middleware.stripToken,
