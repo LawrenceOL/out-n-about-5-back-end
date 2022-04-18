@@ -1,6 +1,5 @@
 'use strict'
 const { Model } = require('sequelize')
-const { Sequelize } = require('.')
 module.exports = (sequelize, DataTypes) => {
   class User extends Model {
     /**
@@ -18,8 +17,15 @@ module.exports = (sequelize, DataTypes) => {
       firstName: DataTypes.STRING,
       lastName: DataTypes.STRING,
       location: DataTypes.STRING,
-      username: DataTypes.STRING,
-      password: DataTypes.STRING,
+      username: {
+        type: DataTypes.STRING,
+        unique: true,
+        allowNull: false,
+      },
+      passwordDigest: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      },
       email: DataTypes.STRING,
       activityList: { type: DataTypes.ARRAY(DataTypes.STRING) },
       score: { type: DataTypes.INTEGER, allowNull: true }

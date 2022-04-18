@@ -14,7 +14,6 @@ app.use(express.json())
 app.use(logger('dev'))
 
 app.use('/user', UserRouter)
-
 app.use('/location', LocationRouter)
 app.use('/task', TaskRouter)
 
