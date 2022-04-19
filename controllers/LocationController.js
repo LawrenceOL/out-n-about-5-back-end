@@ -1,4 +1,5 @@
-const { Location, Task, TaskLocation } = require('../models')
+const { Location, Task, Activity } = require('../models')
+const task = require('../models/task')
 
 // const getmyLocation = async (req, res) => {
 //   res.send('working')
@@ -32,14 +33,42 @@ const GetLocationByPk = async (req, res) => {
 
 const CreateLocation = async (req, res) => {
   try {
-    const location = req.body
+    const { location } = req.body
+    const { userId } = req.body
+    console.log(userId)
+    console.log(location)
+
+    const task = await Task.findAll()
+    console.log(task[0].id)
     const newLocation = await Location.create(location)
+    console.log(newLocation.id)
+    const taskLBody = {
+      taskId: Math.ceil(Math.random() * task.length),
+      locationId: newLocation.id,
+      userId: userId
+    }
+    const activity = await Activity.create(taskLBody)
+
     if (newLocation) {
       return res.status(201).send(newLocation)
     }
     res
       .status(203)
       .send({ msg: 'Location not register. Please check require info.' })
+  } catch (error) {
+    throw error
+  }
+}
+
+const CreateALocation = async (req, res) => {
+  try {
+    const location = req.body
+    console.log(location)
+    const newLocation = await Location.create(location)
+    if (newLocation) {
+      return res.status(200).send(newLocation)
+    }
+    res.status(204).send('location not created')
   } catch (error) {
     throw error
   }
@@ -54,7 +83,7 @@ const UpdateLocation = async (req, res) => {
       returning: true
     })
     if (updatedLocation) {
-      returnres.status(200).send(updatedLocation)
+      return res.status(200).send(updatedLocation)
     }
     res.status(204).send('No location found on update.')
   } catch (error) {
@@ -78,24 +107,33 @@ const DeleteLocation = async (req, res) => {
   }
 }
 
-const findAllLocationWithTask = async (req, res) => {
+const FindAllActivities = async (req, res) => {
   try {
-    const location = await Location.findAll({
-      include: [{ model: Task, as: 'place' }]
-    })
-    return res.status(200).send(location)
+    const activities = await Activity.findAll()
+    return res.status(200).send(activities)
   } catch (error) {
     throw error
   }
 }
 
-const joinTaskLocation = async (req, res) => {
+const CreateActivity = async (req, res) => {
   try {
-    const taskLocation = req.body
-    const newTaskLocation = await TaskLocation.create(taskLocation)
-    res.status(200).send(newTaskLocation)
+    const newAct = req.body
+    console.log(newAct)
+    const activity = await Activity.create(newAct)
+    res.status(200).send(activity)
   } catch (error) {
-    error
+    throw error
+  }
+}
+
+const pushToBackEnd = async (req, res) => {
+  try {
+    const locations = req.body
+    const newLocations = await Location.bulkInsert(locations)
+    res.status(200).send(newLocations)
+  } catch (error) {
+    throw error
   }
 }
 
@@ -105,6 +143,8 @@ module.exports = {
   CreateLocation,
   UpdateLocation,
   DeleteLocation,
-  findAllLocationWithTask,
-  joinTaskLocation
+  FindAllActivities,
+  CreateActivity,
+  pushToBackEnd,
+  CreateALocation
 }

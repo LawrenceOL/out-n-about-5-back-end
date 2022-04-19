@@ -5,8 +5,8 @@ module.exports = (sequelize, DataTypes) => {
   class Location extends Model {
     static associate(models) {
       // define association here
-      Location.belongsToMany(models.Task, {
-        through: models.TaskLocation,
+      Location.belongsToMany(models.User, {
+        through: models.Activity,
         as: 'place',
         foreignKey: 'locationId'
       })
@@ -15,10 +15,9 @@ module.exports = (sequelize, DataTypes) => {
   Location.init(
     {
       name: DataTypes.STRING,
-      img: DataTypes.STRING,
-      address: DataTypes.TEXT,
+      url: DataTypes.STRING,
       gps: DataTypes.JSON,
-      description: DataTypes.STRING
+      category: DataTypes.STRING
       // taskId: {
       //   type: DataTypes.INTEGER,
       //   onDelete: 'CASCADE',

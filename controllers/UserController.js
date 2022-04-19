@@ -1,4 +1,4 @@
-const { User } = require('../models')
+const { User, Activity, Task, Location } = require('../models')
 const middleware = require('../middleware')
 
 const GetAllUser = async (req, res) => {
@@ -105,6 +105,28 @@ const CheckSession = async (req, res) => {
   res.send(payload)
 }
 
+const GetUserActivities = async (req, res) => {
+  const actLocation = await User.findAll({
+    include: [
+      {
+        model: Location,
+        as: 'user_act'
+      }
+    ]
+  })
+  const taskInfo = await User.findAll({
+    include: [
+      {
+        model: Task,
+        as: 'user'
+      }
+    ]
+  })
+  let locationTask = { ...actLocation, ...taskInfo }
+  res.send({ actLocation, taskInfo })
+  console.log(locationTask)
+}
+
 module.exports = {
   GetAllUser,
   RegisterUser,
@@ -112,5 +134,6 @@ module.exports = {
   UpdateUser,
   DeleteUser,
   SignIn,
-  CheckSession
+  CheckSession,
+  GetUserActivities
 }

@@ -16,5 +16,6 @@ router.get(
   middleware.verifyToken,
   controller.CheckSession
 )
+router.get('/activities', controller.GetUserActivities)
 
 module.exports = router

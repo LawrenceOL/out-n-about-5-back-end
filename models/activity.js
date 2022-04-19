@@ -1,10 +1,16 @@
 'use strict'
 const { Model } = require('sequelize')
+
 module.exports = (sequelize, DataTypes) => {
-  class TaskLocation extends Model {
-    static associate(models) {}
+  class Activity extends Model {
+    static associate(models) {
+      Activity.belongsTo(models.User, {
+        as: 'user_activity',
+        foreignKey: 'userId'
+      })
+    }
   }
-  TaskLocation.init(
+  Activity.init(
     {
       taskId: {
         type: DataTypes.INTEGER,
@@ -17,14 +23,20 @@ module.exports = (sequelize, DataTypes) => {
         onDelete: 'CASCADE',
         allowNull: false,
         references: { model: 'locations', key: 'id' }
+      },
+      userId: {
+        type: DataTypes.INTEGER,
+        onDelete: 'CASCADE',
+        allowNull: false,
+        references: { model: 'users', key: 'id' }
       }
     },
 
     {
       sequelize,
-      modelName: 'TaskLocation',
-      tableName: 'task_locations'
+      modelName: 'Activity',
+      tableName: 'activities'
     }
   )
-  return TaskLocation
+  return Activity
 }

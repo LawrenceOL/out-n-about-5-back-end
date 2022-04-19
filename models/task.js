@@ -12,7 +12,7 @@ module.exports = (sequelize, DataTypes) => {
       Task.belongsTo(models.User, { as: 'task', foreignKey: 'userId' })
 
       Task.belongsToMany(models.Location, {
-        through: models.TaskLocation,
+        through: models.Activity,
         as: 'activity',
         foreignKey: 'taskId'
       })
