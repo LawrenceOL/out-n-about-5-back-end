@@ -11,16 +11,13 @@ module.exports = {
       name: {
         type: Sequelize.STRING
       },
-      img: {
+      url: {
         type: Sequelize.STRING
-      },
-      address: {
-        type: Sequelize.TEXT
       },
       gps: {
         type: Sequelize.JSON
       },
-      description: {
+      category: {
         type: Sequelize.STRING
       },
       // taskId: {
