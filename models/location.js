@@ -10,6 +10,7 @@ module.exports = (sequelize, DataTypes) => {
       //   as: 'place',
       //   foreignKey: 'locationId'
       // })
+      Location.hasMany(models.Activity, { foreignKey: 'locationId' })
 
       Location.belongsTo(models.Task, {
         as: 'taskLocation',

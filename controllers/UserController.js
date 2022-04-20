@@ -133,7 +133,7 @@ const getUserTaskLocation = async (req, res) => {
     include: [
       {
         model: Task,
-        as: 'user',
+        as: 'userTask',
         require: false,
         // as: 'user',
         include: [{ model: Location, as: 'taskPlace', require: false }]

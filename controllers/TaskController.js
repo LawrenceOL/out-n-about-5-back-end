@@ -1,4 +1,4 @@
-const { Task } = require('../models')
+const { Task, User, Activity, Location } = require('../models')
 
 const GetAllTask = async (req, res) => {
   try {
@@ -74,10 +74,19 @@ const DeleteTask = async (req, res) => {
   }
 }
 
+const FindJoined = async (req, res) => {
+  const task = await Task.findAll({
+    include: [{ model: Activity, include: [Task, User] }]
+  })
+
+  res.send(task)
+}
+
 module.exports = {
   GetAllTask,
   GetTaskByPk,
   CreateTask,
   UpdateTask,
-  DeleteTask
+  DeleteTask,
+  FindJoined
 }

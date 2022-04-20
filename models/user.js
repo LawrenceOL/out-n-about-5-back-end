@@ -9,8 +9,9 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      User.hasMany(models.Task, { as: 'user', foreignKey: 'userId' })
+      User.hasMany(models.Task, { as: 'userTask', foreignKey: 'userId' })
 
+      User.hasMany(models.Activity, { foreignKey: 'userId' })
       //   User.belongsToMany(models.Location, {
       //     as: 'user_act',
       //     foreignKey: 'userId',

@@ -8,10 +8,19 @@ module.exports = (sequelize, DataTypes) => {
         as: 'user_activity',
         foreignKey: 'userId'
       })
+      Activity.belongsTo(models.Task, {
+        as: 'Task_activity',
+        foreignKey: 'taskId'
+      })
+      Activity.belongsTo(models.Location, {
+        as: 'Location_activity',
+        foreignKey: 'locationId'
+      })
     }
   }
   Activity.init(
     {
+      completed: { type: DataTypes.BOOLEAN, defaultValue: false },
       taskId: {
         type: DataTypes.INTEGER,
         onDelete: 'CASCADE',

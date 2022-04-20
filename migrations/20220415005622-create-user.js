@@ -23,11 +23,11 @@ module.exports = {
       username: {
         type: Sequelize.STRING,
         unique: true,
-        allowNull: false,
+        allowNull: false
       },
       passwordDigest: {
-      type: Sequelize.STRING,
-      allowNull: false,
+        type: Sequelize.STRING,
+        allowNull: false
       },
       email: {
         type: Sequelize.STRING,
