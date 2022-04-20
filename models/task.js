@@ -11,11 +11,16 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       Task.belongsTo(models.User, { as: 'task', foreignKey: 'userId' })
 
-      Task.belongsToMany(models.Location, {
-        through: models.Activity,
-        as: 'activity',
+      Task.hasMany(models.Location, {
+        as: 'taskPlace',
         foreignKey: 'taskId'
       })
+
+      // Task.belongsToMany(models.Location, {
+      //   through: models.Activity,
+      //   as: 'activity',
+      //   foreignKey: 'taskId'
+      // })
     }
   }
   Task.init(

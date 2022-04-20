@@ -18,4 +18,6 @@ router.get(
 )
 router.get('/activities', controller.GetUserActivities)
 
+router.get('/task/location/:pk', controller.getUserTaskLocation)
+
 module.exports = router

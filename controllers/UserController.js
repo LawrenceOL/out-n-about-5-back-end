@@ -122,9 +122,27 @@ const GetUserActivities = async (req, res) => {
       }
     ]
   })
-  let locationTask = { ...actLocation, ...taskInfo }
+
   res.send({ actLocation, taskInfo })
   console.log(locationTask)
+}
+
+const getUserTaskLocation = async (req, res) => {
+  const { pk } = req.params
+  const userTaskLoc = await User.findByPk(pk, {
+    include: [
+      {
+        model: Task,
+        as: 'user',
+        require: false,
+        // as: 'user',
+        include: [{ model: Location, as: 'taskPlace', require: false }]
+        // throught: { attributes: [] }
+      }
+    ]
+  })
+  console.log(userTaskLoc)
+  res.send(userTaskLoc)
 }
 
 module.exports = {
@@ -135,5 +153,6 @@ module.exports = {
   DeleteUser,
   SignIn,
   CheckSession,
-  GetUserActivities
+  GetUserActivities,
+  getUserTaskLocation
 }
