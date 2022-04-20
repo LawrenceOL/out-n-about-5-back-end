@@ -14,7 +14,26 @@ const GetActivity = async (req, res) => {
   res.send(activity)
 }
 
+const GetActivityByPk = async (req, res) => {
+  const { pk } = req.params
+  const activity = await Activity.findByPk(pk)
+
+  res.send(activity)
+}
+
+const UpdateActivity = async (req, res) => {
+  const { pk } = req.params
+
+  const activity = await Activity.update(req.body, {
+    where: { id: pk },
+    returning: true
+  })
+  res.send(activity)
+}
+
 module.exports = {
   CreateActivity,
-  GetActivity
+  GetActivity,
+  GetActivityByPk,
+  UpdateActivity
 }
