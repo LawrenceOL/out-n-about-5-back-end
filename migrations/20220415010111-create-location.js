@@ -20,14 +20,14 @@ module.exports = {
       category: {
         type: Sequelize.STRING
       },
-      // taskId: {
-      //   type: Sequelize.INTEGER,
-      //   onDelete: 'CASCADE',
-      //   references: {
-      //     model: 'users',
-      //     key: 'id'
-      //   }
-      // },
+      taskId: {
+        type: Sequelize.INTEGER,
+        onDelete: 'CASCADE',
+        references: {
+          model: 'tasks',
+          key: 'id'
+        }
+      },
 
       createdAt: {
         allowNull: false,

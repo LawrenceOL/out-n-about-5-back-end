@@ -20,7 +20,7 @@ const GetAllLocation = async (req, res) => {
 
 const GetLocationByPk = async (req, res) => {
   try {
-    const pk = req.params.pk
+    const { pk } = req.params
     const location = await Location.findByPk(pk)
     if (location) {
       return res.status(200).send(location)
@@ -130,7 +130,7 @@ const CreateActivity = async (req, res) => {
 const pushToBackEnd = async (req, res) => {
   try {
     const locations = req.body
-    const newLocations = await Location.bulkInsert(locations)
+    const newLocations = await Location.bulkCreate(locations)
     res.status(200).send(newLocations)
   } catch (error) {
     throw error
