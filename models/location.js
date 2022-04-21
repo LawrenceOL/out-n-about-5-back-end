@@ -4,12 +4,6 @@ const { Model } = require('sequelize')
 module.exports = (sequelize, DataTypes) => {
   class Location extends Model {
     static associate(models) {
-      // define association here
-      // Location.belongsToMany(models.User, {
-      //   through: models.Activity,
-      //   as: 'place',
-      //   foreignKey: 'locationId'
-      // })
       Location.hasMany(models.Activity, { foreignKey: 'locationId' })
 
       Location.belongsTo(models.Task, {

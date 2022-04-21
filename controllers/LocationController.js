@@ -1,14 +1,9 @@
 const { Location, Task, Activity } = require('../models')
 const task = require('../models/task')
 
-// const getmyLocation = async (req, res) => {
-//   res.send('working')
-// }
-
 const GetAllLocation = async (req, res) => {
   try {
     const location = await Location.findAll()
-    console.log(location)
     if (location) {
       return res.status(200).send(location)
     }
@@ -35,13 +30,9 @@ const CreateLocation = async (req, res) => {
   try {
     const { location } = req.body
     const { userId } = req.body
-    console.log(userId)
-    console.log(location)
 
     const task = await Task.findAll()
-    console.log(task[0].id)
     const newLocation = await Location.create(location)
-    console.log(newLocation.id)
     const taskLBody = {
       taskId: Math.ceil(Math.random() * task.length),
       locationId: newLocation.id,
@@ -63,7 +54,6 @@ const CreateLocation = async (req, res) => {
 const CreateALocation = async (req, res) => {
   try {
     const location = req.body
-    console.log(location)
     const newLocation = await Location.create(location)
     if (newLocation) {
       return res.status(200).send(newLocation)
@@ -84,7 +74,6 @@ const UpdateLocation = async (req, res) => {
     })
     if (!updatedLocation) {
       updatedLocation = await Location.create(update)
-      console.log('created')
     }
     if (updatedLocation) {
       return res.status(200).send(updatedLocation)
@@ -123,7 +112,6 @@ const FindAllActivities = async (req, res) => {
 const CreateActivity = async (req, res) => {
   try {
     const newAct = req.body
-    console.log(newAct)
     const activity = await Activity.create(newAct)
     res.status(200).send(activity)
   } catch (error) {

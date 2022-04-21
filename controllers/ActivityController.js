@@ -1,7 +1,6 @@
 const { Location, Task, Activity } = require('../models')
 
 const CreateActivity = async (req, res) => {
-  // console.log(reqAct)
   const activity = await Activity.create(req.body)
 
   res.send(activity)
