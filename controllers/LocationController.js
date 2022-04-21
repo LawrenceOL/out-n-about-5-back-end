@@ -78,10 +78,14 @@ const UpdateLocation = async (req, res) => {
   try {
     const pk = req.params.pk
     const update = req.body
-    const updatedLocation = await Location.update(update, {
+    let updatedLocation = await Location.update(update, {
       where: { id: pk },
       returning: true
     })
+    if (!updatedLocation) {
+      updatedLocation = await Location.create(update)
+      console.log('created')
+    }
     if (updatedLocation) {
       return res.status(200).send(updatedLocation)
     }
