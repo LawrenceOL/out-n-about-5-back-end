@@ -38,6 +38,14 @@ const RegisterUser = async (req, res) => {
       passwordDigest,
       location
     })
+    const newTask = await Task.create({
+      taskName: 'User Task',
+      location: 'Here',
+      description: 'Also Here',
+      checkIn: false,
+      comment: 'Here Again',
+      userId: newUser.id
+    })
     res.send(newUser)
   } catch (error) {
     throw error
