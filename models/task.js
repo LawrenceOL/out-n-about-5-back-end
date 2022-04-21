@@ -16,12 +16,6 @@ module.exports = (sequelize, DataTypes) => {
         as: 'taskPlace',
         foreignKey: 'taskId'
       })
-
-      // Task.belongsToMany(models.Location, {
-      //   through: models.Activity,
-      //   as: 'activity',
-      //   foreignKey: 'taskId'
-      // })
     }
   }
   Task.init(

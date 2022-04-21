@@ -132,7 +132,6 @@ const GetUserActivities = async (req, res) => {
   })
 
   res.send({ actLocation, taskInfo })
-  console.log(locationTask)
 }
 
 const getUserTaskLocation = async (req, res) => {
@@ -143,13 +142,10 @@ const getUserTaskLocation = async (req, res) => {
         model: Task,
         as: 'userTask',
         require: false,
-        // as: 'user',
         include: [{ model: Location, as: 'taskPlace', require: false }]
-        // throught: { attributes: [] }
       }
     ]
   })
-  console.log(userTaskLoc)
   res.send(userTaskLoc)
 }
 
