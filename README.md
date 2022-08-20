@@ -8,27 +8,30 @@
 
 ### **_Links_**
 
-#### [Out n About 5: Back-end Repo](https://github.com/LawrenceOL/out-n-about-5-front-end) 
+#### [Out n About 5: Back-end Repo](https://github.com/LawrenceOL/out-n-about-5-back-end) 
 #### [Planning Trello](https://trello.com/b/CnWK8EJM/out-n-about-5) 
 #### [Deployment on Heroku](https://out-n-about-5-front-end.herokuapp.com/)
 ---
 
 ### **_Description_**
 
-### Explore your world! Out n About 5 is a scavenger hunt game that challenges users to complete 5 tasks located at 5 new places within 5 miles of their location
+#### Explore your world! Out n About 5 is a scavenger hunt game that challenges users to complete 5 tasks located at 5 new places within 5 miles of their location
 
 ---
 
 ### **_Screenshots_**
 
 <img src='https://github.com/LawrenceOL/out-n-about-5-front-end/blob/main/src/assets/outnaboutsignin.PNG?raw=true'  alt="screenshot" width="600"/>
-#### **Login Screen**
+
+### **Login Screen**
 
 <img src='https://github.com/LawrenceOL/out-n-about-5-front-end/blob/main/src/assets/outnaboutactivities.PNG?raw=true'  alt="screenshot" width="600"/>
-#### **Gameplay**
+
+### **Gameplay**
 
 <img src='https://github.com/LawrenceOL/out-n-about-5-front-end/blob/main/src/assets/outnaboutstartgame.PNG?raw=true'  alt="screenshot" width="300"/>
-#### **Ready to play? Visit the Heroku Deployment**
+
+### **Ready to play? Visit the Heroku Deployment**
 
 
 
@@ -46,7 +49,7 @@
   - Github
 - Leaflet
   - React Leaflet   
-- OpenOpenStreetMap Overpass API
+- OpenStreetMap Overpass API
 
 
 ### **_Getting Started_**
@@ -65,3 +68,7 @@
 #### [Overpass API](http://overpass-api.de/)
 #### [Leaflet](https://leafletjs.com/)
 #### [React Leaflet](https://react-leaflet.js.org/)
+
+
+
+
